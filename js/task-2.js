@@ -25,28 +25,67 @@ const images = [
   }
 ];
 
-let counter = 0;
+//let counter = 0;
 
-const galleryArray = document.querySelector("ul.gallery");
-images.forEach(function callback(element, index, array) {
-  if (counter >= 3) {
-    return;
-  }
-  const newEl = document.createElement("li");
-  newEl.classList.add("gallery-list");
-  galleryArray.append(newEl);
+// const galleryArray = document.querySelector("ul.gallery");
+// images.forEach(function callback(element, index, array) {
+//   if (counter >= 3) {
+//     return;
+//   }
+//   const newEl = document.createElement("li");
+//   newEl.classList.add("gallery-list");
+//   galleryArray.append(newEl);
   
-  const imageEl = document.createElement("img");
-  imageEl.src = element.url;
-  imageEl.alt = element.alt;
-  imageEl.width = 360;
-  imageEl.height = 300;
+//   const imageEl = document.createElement("img");
+//   imageEl.src = element.url;
+//   imageEl.alt = element.alt;
+//   imageEl.width = 360;
+//   imageEl.height = 300;
 
-  newEl.append(imageEl);
+//  newEl.append(imageEl);
     
-  counter++;
-})
+//   counter++;
+// })
 
+const galleryListEl = document.querySelector("ul.gallery");
+const fragment = document.createDocumentFragment();
+
+images.forEach(function callback(element) {
+const li = document.createElement("li");
+li.classList.add("gallery-list");
+const imageEl = document.createElement("img");
+imageEl.src = element.url;
+imageEl.alt = element.alt;
+imageEl.width = 360;
+imageEl.height = 300;
+
+  fragment.appendChild(li, imageEl);
+});
+
+galleryListEl.appendChild(fragment);
+
+
+
+// const galleryArray = document.querySelector("ul.gallery");
+// const newEl = document.createElement("li");
+// const imageEl = document.createElement("img");
+
+// images.forEach(function callback(element, _index) {
+//   if (counter >= 3) {
+// imageEl.src = element.url;
+// imageEl.alt = element.alt;
+// imageEl.width = 360;
+// imageEl.height = 300;
+//   return;
+//   }
+// counter++;
+// })
+ 
+// const createElementArray = [];
+// const markup = createElementArray
+//   .map((imageEl) => `<li class="gallery-list">${imageEl}</li>`);
+
+// galleryArray.insertAdjacentHTML("beforeend", markup);
 
 
 
